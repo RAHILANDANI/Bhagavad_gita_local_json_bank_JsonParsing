@@ -51,26 +51,61 @@ class _homepageState extends State<homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: TextButton(
-          onPressed: () {
-            Provider.of<themeprovider>(context, listen: false).changelanguage();
-          },
-          child: Text("Hindi"),
+      drawer: Drawer(
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 100,
+              ),
+              Text("Bhagavad Gita"),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Text("Change Lanuage - "),
+                  TextButton(
+                    onPressed: () {
+                      Provider.of<themeprovider>(context, listen: false)
+                          .changelanguage();
+                    },
+                    child: (Provider.of<themeprovider>(context)
+                                .languages
+                                .ishindi ==
+                            false)
+                        ? Text("Hindi")
+                        : Text("English"),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text("Change Theme - "),
+                  IconButton(
+                    onPressed: () {
+                      Provider.of<themeprovider>(context, listen: false)
+                          .changetheme();
+                    },
+                    icon: (Provider.of<themeprovider>(context)
+                                .themeDetails
+                                .isDark ==
+                            false)
+                        ? Icon(Icons.dark_mode)
+                        : Icon(Icons.light_mode),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
+      ),
+      appBar: AppBar(
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.favorite))],
         backgroundColor: Colors.brown,
         title: Text("Bhagavad gita chapters"),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Provider.of<themeprovider>(context, listen: false).changetheme();
-            },
-            icon: (Provider.of<themeprovider>(context).themeDetails.isDark ==
-                    false)
-                ? Icon(Icons.dark_mode)
-                : Icon(Icons.light_mode),
-          ),
-        ],
         centerTitle: true,
       ),
       body: ListView(

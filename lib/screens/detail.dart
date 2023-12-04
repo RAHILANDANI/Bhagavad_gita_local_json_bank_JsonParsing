@@ -17,6 +17,57 @@ class _detailsState extends State<details> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 100,
+              ),
+              Text("Bhagavad Gita"),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Text("Change Lanuage - "),
+                  TextButton(
+                    onPressed: () {
+                      Provider.of<themeprovider>(context, listen: false)
+                          .changelanguage();
+                    },
+                    child: (Provider.of<themeprovider>(context)
+                                .languages
+                                .ishindi ==
+                            false)
+                        ? Text("Hindi")
+                        : Text("English"),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text("Change Theme - "),
+                  IconButton(
+                    onPressed: () {
+                      Provider.of<themeprovider>(context, listen: false)
+                          .changetheme();
+                    },
+                    icon: (Provider.of<themeprovider>(context)
+                                .themeDetails
+                                .isDark ==
+                            false)
+                        ? Icon(Icons.dark_mode)
+                        : Icon(Icons.light_mode),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.brown,
         title: Text("Chapter Number - ${widget.information.chapter_number}"),
@@ -44,7 +95,9 @@ class _detailsState extends State<details> {
             SizedBox(
               height: 30,
             ),
-            Text(widget.information.chapter_summary)
+            (Provider.of<themeprovider>(context).languages.ishindi == false)
+                ? Text(widget.information.chapter_summary)
+                : Text(widget.information.chapter_summary_hindi)
           ],
         ),
       ),
