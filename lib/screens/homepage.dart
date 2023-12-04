@@ -6,6 +6,7 @@ import 'package:jsonparsing/model/information.dart';
 import 'package:jsonparsing/model/language_model.dart';
 import 'package:jsonparsing/provider/theme_provider.dart';
 import 'package:jsonparsing/screens/detail.dart';
+import 'package:jsonparsing/screens/like.dart';
 import 'package:provider/provider.dart';
 
 class homepage extends StatefulWidget {
@@ -98,12 +99,26 @@ class _homepageState extends State<homepage> {
                   ),
                 ],
               ),
+              Row(
+                children: [
+                  Text("Liked chapter - "),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => liked(),
+                          ));
+                    },
+                    child: Text("See liked chapter"),
+                  ),
+                ],
+              )
             ],
           ),
         ),
       ),
       appBar: AppBar(
-        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.favorite))],
         backgroundColor: Colors.brown,
         title: Text("Bhagavad gita chapters"),
         centerTitle: true,
@@ -113,6 +128,14 @@ class _homepageState extends State<homepage> {
             .map(
               (e) => Card(
                 child: ListTile(
+                  leading: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        likedlist.add(allShloka[0]);
+                      });
+                    },
+                    icon: Icon(Icons.favorite),
+                  ),
                   onTap: () {
                     Navigator.push(
                         context,
