@@ -3,7 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jsonparsing/model/information.dart';
+import 'package:jsonparsing/model/language_model.dart';
 import 'package:jsonparsing/provider/theme_provider.dart';
+import 'package:jsonparsing/screens/detail.dart';
 import 'package:provider/provider.dart';
 
 class homepage extends StatefulWidget {
@@ -34,6 +36,7 @@ class _homepageState extends State<homepage> {
     allShloka = shloka
         .map(
           (e) => info(
+              image: e['image'],
               id: e['id'],
               name: e['image_name'],
               chapter_number: e['chapter_number'],
@@ -49,6 +52,12 @@ class _homepageState extends State<homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: TextButton(
+          onPressed: () {
+            Provider.of<themeprovider>(context, listen: false).changelanguage();
+          },
+          child: Text("Hindi"),
+        ),
         backgroundColor: Colors.brown,
         title: Text("Bhagavad gita chapters"),
         actions: [
@@ -69,10 +78,22 @@ class _homepageState extends State<homepage> {
             .map(
               (e) => Card(
                 child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => details(information: e),
+                        ));
+                  },
                   title: Text(
                     "Chapter - ${e.chapter_number}",
                   ),
-                  subtitle: Text("Chapter Name - ${e.name}"),
+                  subtitle:
+                      (Provider.of<themeprovider>(context).languages.ishindi ==
+                              false)
+                          ? Text("Chapter Name - ${e.name}")
+                          : Text("chapter Name - ${e.name_hindi}"),
+                  trailing: Icon(Icons.keyboard_arrow_right),
                 ),
               ),
             )

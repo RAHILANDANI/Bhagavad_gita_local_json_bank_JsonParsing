@@ -6,6 +6,7 @@ class info {
   String name_hindi;
   String name;
   int verses_count;
+  String image;
 
   info(
       {required this.id,
@@ -14,5 +15,6 @@ class info {
       required this.chapter_summary,
       required this.chapter_summary_hindi,
       required this.name_hindi,
-      required this.verses_count});
+      required this.verses_count,
+      required this.image});
 }
