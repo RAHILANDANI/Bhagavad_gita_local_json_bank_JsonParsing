@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jsonparsing/model/information.dart';
-import 'package:jsonparsing/model/language_model.dart';
 import 'package:jsonparsing/provider/theme_provider.dart';
 import 'package:jsonparsing/screens/detail.dart';
 import 'package:jsonparsing/screens/like.dart';

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jsonparsing/model/information.dart';
 import 'package:provider/provider.dart';
-
 import '../provider/theme_provider.dart';
 
 List<info> likedlist = [];

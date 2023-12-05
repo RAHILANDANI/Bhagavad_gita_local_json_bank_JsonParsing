@@ -1,5 +1,3 @@
-import 'information.dart';
-
 class language {
   bool ishindi;
 
