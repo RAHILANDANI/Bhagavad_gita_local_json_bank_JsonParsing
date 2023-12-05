@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jsonparsing/screens/like.dart';
 import 'package:provider/provider.dart';
-
 import '../model/information.dart';
 import '../provider/theme_provider.dart';
 
@@ -61,6 +61,22 @@ class _detailsState extends State<details> {
                             false)
                         ? Icon(Icons.dark_mode)
                         : Icon(Icons.light_mode),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text("Liked chapter - "),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => liked(),
+                        ),
+                      );
+                    },
+                    child: Text("See liked chapter"),
                   ),
                 ],
               ),

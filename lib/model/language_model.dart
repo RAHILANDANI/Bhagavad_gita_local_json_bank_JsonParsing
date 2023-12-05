@@ -5,5 +5,3 @@ class language {
 
   language({required this.ishindi});
 }
-
-List<info> likedlist = [];

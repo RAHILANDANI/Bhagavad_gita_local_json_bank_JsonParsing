@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jsonparsing/provider/theme_provider.dart';
-import 'package:jsonparsing/screens/homepage.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/splashscreen.dart';

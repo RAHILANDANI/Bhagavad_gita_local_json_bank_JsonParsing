@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:jsonparsing/model/information.dart';
@@ -105,10 +104,11 @@ class _homepageState extends State<homepage> {
                   TextButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => liked(),
-                          ));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => liked(),
+                        ),
+                      );
                     },
                     child: Text("See liked chapter"),
                   ),
@@ -131,7 +131,9 @@ class _homepageState extends State<homepage> {
                   leading: IconButton(
                     onPressed: () {
                       setState(() {
-                        likedlist.add(allShloka[0]);
+                        likedlist.add(e);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Liked Sucessfully")));
                       });
                     },
                     icon: Icon(Icons.favorite),
