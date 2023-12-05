@@ -21,27 +21,37 @@ class _likedState extends State<liked> {
         backgroundColor: Colors.brown,
         title: Text("Liked Chapter"),
       ),
-      body: ListView.builder(
-        itemCount: likedlist.length,
-        itemBuilder: (context, index) => Card(
-          child: ListTile(
-            title: Text(
-              "Chapter - ${likedlist[index].chapter_number}",
+      body: (likedlist.isEmpty)
+          ? Center(
+              child: Text(
+              "No liked Chapter",
+              style: TextStyle(fontSize: 30),
+            ))
+          : ListView.builder(
+              itemCount: likedlist.length,
+              itemBuilder: (context, index) => Card(
+                child: ListTile(
+                  title: Text(
+                    "Chapter - ${likedlist[index].chapter_number}",
+                  ),
+                  subtitle: (Provider.of<themeprovider>(context)
+                              .languages
+                              .ishindi ==
+                          false)
+                      ? Text("Chapter Name - ${likedlist[index].name}")
+                      : Text("chapter Name - ${likedlist[index].name_hindi}"),
+                  trailing: IconButton(
+                      onPressed: () {
+                        setState(
+                          () {
+                            likedlist.removeAt(index);
+                          },
+                        );
+                      },
+                      icon: Icon(Icons.delete)),
+                ),
+              ),
             ),
-            subtitle:
-                (Provider.of<themeprovider>(context).languages.ishindi == false)
-                    ? Text("Chapter Name - ${likedlist[index].name}")
-                    : Text("chapter Name - ${likedlist[index].name_hindi}"),
-            trailing: IconButton(
-                onPressed: () {
-                  setState(() {
-                    likedlist.removeAt(index);
-                  });
-                },
-                icon: Icon(Icons.delete)),
-          ),
-        ),
-      ),
     );
   }
 }

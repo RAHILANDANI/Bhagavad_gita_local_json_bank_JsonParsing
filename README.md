@@ -5,3 +5,5 @@
 <img src="https://github.com/RAHILANDANI/Bhagavad_gita_local_json_bank_JsonParsing/blob/master/output/5.png">
 <img src="https://github.com/RAHILANDANI/Bhagavad_gita_local_json_bank_JsonParsing/blob/master/output/6.png">
 <img src="https://github.com/RAHILANDANI/Bhagavad_gita_local_json_bank_JsonParsing/blob/master/output/7.png">
+<img src="https://github.com/RAHILANDANI/Bhagavad_gita_local_json_bank_JsonParsing/blob/master/output/8.png">
+<img src="https://github.com/RAHILANDANI/Bhagavad_gita_local_json_bank_JsonParsing/blob/master/output/9.png">
